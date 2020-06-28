@@ -1,0 +1,3 @@
+cd C:\Dash\microblog
+venv\Scripts\activate
+flask run
