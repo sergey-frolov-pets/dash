@@ -33,7 +33,7 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
 
-# Ошибки по Email НЕ РАБОТАЕТ!!!
+#TODO Ошибки по Email НЕ РАБОТАЕТ!!! Исправить как в конце статьи тут: https://habr.com/ru/post/346880/
 """
 from logging.handlers import SMTPHandler
 
