@@ -25,3 +25,14 @@ set MAIL_PORT=587
 set MAIL_USE_TLS=1
 set MAIL_USERNAME=<your-gmail-username>
 set MAIL_PASSWORD=<your-gmail-password>
+
+7. JWT - JSON Web Token
+
+установка
+pip install pyjwt
+
+запускаем python
+import jwt
+token = jwt.encode({'a': 'b'}, 'my-secret', algorithm='HS256')
+token
+jwt.decode(token, 'my-secret', algorithms=['HS256'])
