@@ -17,3 +17,5 @@ class Config(object):
     ADMINS = ['pet-projects@sergey-frolov.ru']
 
     POSTS_PER_PAGE = 3
+
+    LANGUAGES = ['en', 'ru']
