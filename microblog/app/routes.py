@@ -26,7 +26,7 @@ def index():
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')
-        #TODO Посмотреть паттерн Post/Redirect/Get (https://en.wikipedia.org/wiki/Post/Redirect/Get) и вообще про POST и GET запросы
+        #INFO Посмотреть паттерн Post/Redirect/Get (https://en.wikipedia.org/wiki/Post/Redirect/Get) и вообще про POST и GET запросы
         return redirect(url_for('index'))
 
     page = request.args.get('page', 1, type=int)

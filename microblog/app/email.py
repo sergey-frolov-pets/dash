@@ -24,7 +24,7 @@ def send_password_reset_email(user):
                html_body=render_template('email/reset_password.html',
                                          user=user, token=token))
 
-#TODO Почитать документация Flask-Mail (https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-x-email-support)
+#INFO Почитать документация Flask-Mail (https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-x-email-support)
 
 '''
 Если вы хотите использовать эмулированный почтовый сервер

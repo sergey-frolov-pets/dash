@@ -7,6 +7,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment #INFO см. https://momentjs.com/
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -20,6 +21,7 @@ login.login_message = "Пожалуйста, войдите, чтобы откр
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 bootstrap = Bootstrap(app)
+moment = Moment(app)
 
 from app import routes, models, errors
 
@@ -41,7 +43,7 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
 
-#TODO Ошибки по Email НЕ РАБОТАЕТ!!! Исправить как в конце статьи тут: https://habr.com/ru/post/346880/
+#FIXME Ошибки по Email НЕ РАБОТАЕТ!!! Исправить как в конце статьи тут: https://habr.com/ru/post/346880/
 """
 from logging.handlers import SMTPHandler
 

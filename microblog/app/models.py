@@ -19,7 +19,7 @@ followers = db.Table('followers',
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
 )
 
-#TODO Почитать про модули Flask для работы с юзерами flask-user.readthedocs.io/en/v0.6/basic_app.html
+#INFO Почитать про модули Flask для работы с юзерами flask-user.readthedocs.io/en/v0.6/basic_app.html
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
