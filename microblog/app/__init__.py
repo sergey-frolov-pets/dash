@@ -10,6 +10,7 @@ from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment #INFO см. https://momentjs.com/
 from flask_babel import Babel
+from flask_babel import _, lazy_gettext as _l
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -18,7 +19,7 @@ mail = Mail(app)
 
 login = LoginManager(app)
 login.login_view = 'login'
-login.login_message = "Пожалуйста, войдите, чтобы открыть эту страницу." # <-- я добавил эту строку
+login.login_message = _l('Please log in to access this page.')
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -48,7 +49,8 @@ if not app.debug:
 
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    #return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return 'ru'
 
 #FIXME Ошибки по Email НЕ РАБОТАЕТ!!! Исправить как в конце статьи тут: https://habr.com/ru/post/346880/
 """
