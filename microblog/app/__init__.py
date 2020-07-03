@@ -9,30 +9,28 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment #INFO см. https://momentjs.com/
-from flask_babel import Babel
-from flask_babel import _, lazy_gettext as _l
+from flask_babel import Babel,  _, lazy_gettext as _l
 
 app = Flask(__name__)
 app.config.from_object(Config)
-
-mail = Mail(app)
 
 login = LoginManager(app)
 login.login_view = 'login'
 login.login_message = _l('Please log in to access this page.')
 
+mail = Mail(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 babel = Babel(app)
 
-from app import routes, models, errors
+from app import routes, models, errors, db, cli
+from app.models import User, Post
 
-
+import os
 import logging
 from logging.handlers import RotatingFileHandler
-import os
 
 if not app.debug:
     if not os.path.exists('logs'):
@@ -46,6 +44,10 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 'User': User, 'Post': Post}
 
 @babel.localeselector
 def get_locale():
@@ -72,4 +74,3 @@ if not app.debug:
         mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
 """
-

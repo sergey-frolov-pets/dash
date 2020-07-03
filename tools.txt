@@ -37,6 +37,7 @@ token = jwt.encode({'a': 'b'}, 'my-secret', algorithm='HS256')
 token
 jwt.decode(token, 'my-secret', algorithms=['HS256'])
 
+
 8. Flask-Babel для перевода
 
 Извлекаем строки для перевода из исходников:
