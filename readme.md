@@ -6,3 +6,6 @@
 Deployment https://dash.plotly.com/deployment
 
 Уроки Flask по ссылке https://habr.com/ru/post/346306/
+
+Шпаргалка по Plotly:
+https://m.habr.com/ru/post/502958/
